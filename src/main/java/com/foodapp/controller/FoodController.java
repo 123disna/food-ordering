@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+<<<<<<< HEAD
+=======
+import java.util.List;
+>>>>>>> cb0ed28 (initial commit)
 
 @Controller
 @RequestMapping("/foods")
@@ -37,9 +41,15 @@ public class FoodController {
         return "redirect:/foods/" + food.getId();
     }
 
+<<<<<<< HEAD
     @GetMapping("/{id}")
     public String showFoodDetails(@PathVariable("id") Long id, Model model) {
         Food food = foodService.getFoodById(id);
+=======
+    @GetMapping("/all")
+    public String showFoodDetails(Model model) {
+        List<Food> food = foodService.getAllFoods();
+>>>>>>> cb0ed28 (initial commit)
         model.addAttribute("food", food);
         model.addAttribute("imageUtils", imageUtils);
         return "foodDetails";
