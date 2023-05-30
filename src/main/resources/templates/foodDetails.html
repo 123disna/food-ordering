@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Food Details</title>
+</head>
+<body>
+<h2>Food Details</h2>
+<div>
+  <p>Name: <span th:text="${food.name}"></span></p>
+  <p>Image: <img th:src="@{|data:image/png;base64,${food.image != null ? imageUtils.encodeImage(food.image) : ''}|}"/></p>
+</div>
+</body>
+</html>
