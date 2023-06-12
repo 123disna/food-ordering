@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Food Management System</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+<body style="background-image:url('https://img.freepik.com/free-photo/hamburger-with-glass-water-side_188544-12233.jpg?w=740&t=st=1686574058~exp=1686574658~hmac=ba0c7b2ad123b6c433c8169bd65cfc073d05e24b520b4912b3ca166d29ecd285'); background-size:cover;">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Food Management System</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/foods/all}">Foods</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card" style="padding:20px; background-color:#00000099;">
+      <h1 class="text-center" style="color:white;">User Login</h1>
+      <div class="card-body" >
+        <form th:action="@{/register}" th:object="${user}" method="post"  >
+          <div class="form-group">
+            <label style="color:white;">Username</label>
+            <input
+                    type="text"
+                    name="email"
+                    th:field="*{email}"
+                    class="form-control"
+                    placeholder="Enter User Email"/>
+          </div>
+          <div class="form-group">
+            <label style="color:white;">Password</label>
+            <input
+                    type="password"
+                    name="password"
+                    th:field="*{password}"
+                    class="form-control"
+                    placeholder="Enter User Password"/>
+          </div>
+          <div class="form-group">
+            <label style="color:white;">User Role</label>
+            <input
+                    type="text"
+                    name="role"
+                    th:field="*{role}"
+                    class="form-control"
+                    placeholder="Use Capital"/>
+          </div>
+          <div class="box-footer">
+            <button type="submit" class="btn btn-secondary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

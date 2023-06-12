@@ -9,22 +9,39 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
 </head>
-<body>
-<h2>Food Details</h2>
-<table class="table table-striped table-bordered">
-  <thead class="table-dark">
-  <tr>
-    <th>Name</th>
-    <th>Image</th>
-  </tr>
-  </thead>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark" style="position:fixed; width:100%; z-index:10;">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Food Management System</a>
 
-  <tbody>
-  <tr th:each="foods: ${food}">
-    <td th:text="${foods.name}"></td>
-    <td><img th:src="@{|data:image/png;base64,${foods.image != null ? imageUtils.encodeImage(foods.image) : ''}|}"/></td>
-  </tr>
-  </tbody>
-</table>
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/foods/new}">Add Food</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br>
+<body style="background-color:#fff;">
+<h2 style="text-align:center; margin-top:50px;">Food Details</h2>
+<div style="display:flex; align-item:center; justify-content:flex-start; flex-wrap:wrap; margin-top:40px; margin-bottom:40px; padding:10px;">
+  <div th:each="foods: ${food}">
+    <div class="card" style="width: 17.35rem; height:370px; display:block; margin-left:12px; margin-right:12px; margin-bottom:20px;
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+      <img class="card-img-top" style="height:250px;" th:src="@{|data:image/png;base64,${foods.image != null ? imageUtils.encodeImage(foods.image) : ''}|}" alt="Card image cap">
+      <div class="card-body">
+        <p class="card-text" th:text="${foods.name}" style="font-size:25px; font-weight:bold; text-align:center;"></p>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
+
+

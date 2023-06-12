@@ -9,13 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-<<<<<<< HEAD
-=======
 import java.util.List;
->>>>>>> cb0ed28 (initial commit)
 
 @Controller
-@RequestMapping("/foods")
+@CrossOrigin
 public class FoodController {
     private final FoodService foodService;
     private final ImageUtils imageUtils;
@@ -25,31 +22,25 @@ public class FoodController {
         this.imageUtils = imageUtils;
     }
 
-    @GetMapping("/new")
+    @GetMapping("/foods/new")
     public String showFoodForm(Model model) {
         model.addAttribute("food", new Food());
         return "food-form";
     }
 
-    @PostMapping("/new")
+    @PostMapping("/foods/new")
     public String saveFood(@ModelAttribute("food") Food food, @RequestParam("imageFile") MultipartFile imageFile) throws IOException, IOException {
         if (!imageFile.isEmpty()) {
             food.setImage(imageFile.getBytes());
         }
 
         foodService.saveFood(food);
-        return "redirect:/foods/" + food.getId();
+        return "redirect:/foods/all";
     }
 
-<<<<<<< HEAD
-    @GetMapping("/{id}")
-    public String showFoodDetails(@PathVariable("id") Long id, Model model) {
-        Food food = foodService.getFoodById(id);
-=======
-    @GetMapping("/all")
+    @GetMapping("/foods/all")
     public String showFoodDetails(Model model) {
         List<Food> food = foodService.getAllFoods();
->>>>>>> cb0ed28 (initial commit)
         model.addAttribute("food", food);
         model.addAttribute("imageUtils", imageUtils);
         return "foodDetails";
