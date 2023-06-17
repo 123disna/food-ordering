@@ -1,6 +1,5 @@
 package com.foodapp.controller;
 
-import com.foodapp.entity.Food;
 import com.foodapp.entity.User;
 import com.foodapp.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,12 @@ public class UserLoginController {
     public String saveUser(@ModelAttribute("user") User user){
         String hshPwd=passwordEncoder.encode(user.getPassword());
         user.setPassword(hshPwd);
-        userRepo.save(user);
+        if(user.getRole().equals("USER")) {
+            userRepo.save(user);
+        }
+        if(user.getRole().equals("USER")) {
+            return "redirect:/foods/cart";
+        }
         return "redirect:/foods/all";
     }
 }

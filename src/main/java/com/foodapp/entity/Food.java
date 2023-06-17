@@ -12,17 +12,21 @@ public class Food {
 
     private String name;
 
+    private double price;
+
     @Lob
     private byte[] image;
 
     public Food() {
     }
 
-    public Food(Long id, String name, byte[] image) {
+    public Food(Long id, String name, double price, byte[] image) {
         this.id = id;
         this.name = name;
+        this.price = price;
         this.image = image;
     }
+
 
     public Long getId() {
         return id;
@@ -40,6 +44,14 @@ public class Food {
         this.name = name;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public byte[] getImage() {
         return image;
     }
@@ -53,8 +65,8 @@ public class Food {
         return "Food{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", price=" + price +
                 ", image=" + Arrays.toString(image) +
                 '}';
     }
-    // Constructors, getters, and setters
 }

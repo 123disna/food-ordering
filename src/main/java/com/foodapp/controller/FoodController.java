@@ -13,6 +13,7 @@ import java.util.List;
 
 @Controller
 @CrossOrigin
+@SessionAttributes("items")
 public class FoodController {
     private final FoodService foodService;
     private final ImageUtils imageUtils;
@@ -46,5 +47,12 @@ public class FoodController {
         return "foodDetails";
     }
 
-    // Other methods if needed
+    @GetMapping("/foods/cart")
+    public String addToCartPage(Model model) {
+        List<Food> food = foodService.getAllFoods();
+        model.addAttribute("food", food);
+        model.addAttribute("imageUtils", imageUtils);
+        return "addtocart";
+    }
+
 }
